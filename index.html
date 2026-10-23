@@ -1,0 +1,231 @@
+<title>5 meses contigo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+/* Concepto: una sola columna estrecha, como una historia que se desliza.
+   Fondo ciruela oscuro, fotos como polaroids ligeramente torcidas, carta en papel claro al final. */
+:root{
+  --bg:#150d17;
+  --bg-2:#1f1322;
+  --fg:#f3e7ea;
+  --muted:#b9a3b0;
+  --rose:#ff5c8a;
+  --gold:#e9c46a;
+  --paper:#fdf3ef;
+  --ink:#2a1a22;
+  --f-display:"Playfair Display",Georgia,serif;
+  --f-letter:"Fraunces",Georgia,serif;
+  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 56px;
+  background-image:radial-gradient(120% 60% at 50% 0%,#2b1631 0%,transparent 70%);
+  background-repeat:no-repeat;
+}
+.wrap{max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:44px;padding-top:36px}
+h1,h2,h3,p,figure{margin:0}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;gap:20px}
+.cards{display:flex;justify-content:center;height:92px;margin-bottom:6px}
+.card{width:52px;height:78px;border-radius:9px;border:3px solid #fff;margin-inline:-6px;
+  display:grid;place-items:center;color:#fff;font:700 24px/1 var(--f-body);
+  box-shadow:0 6px 14px rgba(0,0,0,.45);transform-origin:50% 120%}
+.card:nth-child(1){background:#e23b3b;transform:rotate(-16deg)}
+.card:nth-child(2){background:#f0b82b;transform:rotate(-5deg) translateY(-4px)}
+.card:nth-child(3){background:#2fa35a;transform:rotate(6deg) translateY(-4px)}
+.card:nth-child(4){background:#2f6fd0;transform:rotate(17deg)}
+.quote{font-family:var(--f-display);font-style:italic;color:var(--gold);font-size:21px;line-height:1.35;text-align:center;text-wrap:balance}
+.since{color:var(--muted);font-size:14px;margin-top:6px}
+.big{font-family:var(--f-display);font-size:150px;line-height:.8;color:var(--rose);margin:0 0 0 -4px}
+.tagline{font-family:var(--f-display);font-style:italic;font-weight:500;font-size:34px;line-height:1.15;text-wrap:balance}
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tick{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:12px 4px 9px;text-align:center}
+.tick b{display:block;font-family:var(--f-display);font-weight:500;font-size:28px;color:var(--gold);line-height:1.1;font-variant-numeric:tabular-nums}
+.tick span{font-size:12px;color:var(--muted)}
+.note{color:var(--muted);font-size:14px}
+
+/* Polaroid */
+.polaroid{background:var(--paper);padding:10px 10px 0;border-radius:3px;box-shadow:0 18px 40px rgba(0,0,0,.5);
+  transform:rotate(var(--r,-1.5deg));transition:transform .5s ease}
+.polaroid img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;border-radius:1px;background:#3a2a3a}
+.polaroid figcaption{font-family:var(--f-display);font-style:italic;color:var(--ink);font-size:17px;text-align:center;padding:12px 8px 14px}
+.polaroid:hover{transform:rotate(0) scale(1.015)}
+
+/* Bloques de texto */
+.block{display:flex;flex-direction:column;gap:14px}
+.text{display:flex;flex-direction:column;gap:6px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.title{font-family:var(--f-display);font-weight:500;font-size:22px;line-height:1.25;color:var(--gold);text-wrap:balance}
+.text p{color:var(--fg);opacity:.88;max-width:62ch}
+.meet{display:flex;flex-direction:column;gap:10px}
+.rainbow{height:4px;width:96px;border-radius:2px;background:linear-gradient(90deg,#e23b3b 0 25%,#f0b82b 0 50%,#2fa35a 0 75%,#2f6fd0 0)}
+.meet .title,.best .title{color:var(--fg);font-size:24px}
+
+/* Carta */
+.letter{background:var(--paper);color:var(--ink);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.letter h2{font-family:var(--f-display);font-weight:500;font-size:26px;color:#b3365c}
+.letter p{font-family:var(--f-letter);font-size:17px;line-height:1.65}
+.letter .sign{font-style:italic;text-align:right}
+.cta{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;color:var(--muted);font-size:14px}
+button.love{font:600 16px/1 var(--f-body);background:var(--rose);color:#fff;border:0;border-radius:999px;padding:16px 30px;cursor:pointer;
+  box-shadow:0 10px 24px rgba(255,92,138,.35);transition:transform .15s}
+button.love:hover{transform:scale(1.05)}
+button.love:active{transform:scale(.96)}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Sorpresa */
+#surprise{position:fixed;inset:0;z-index:50;display:grid;place-items:center;text-align:center;cursor:pointer;
+  background:linear-gradient(160deg,#ff4f84,#c2255c 70%,#8d1646);
+  padding:24px max(24px,env(safe-area-inset-right,0px)) 24px max(24px,env(safe-area-inset-left,0px))}
+#surprise[hidden]{display:none}
+#surprise .msg{font-family:var(--f-display);font-style:italic;font-weight:500;font-size:clamp(34px,10vw,56px);line-height:1.15;color:#fff;text-wrap:balance;position:relative;z-index:2;animation:pop .6s cubic-bezier(.2,1.4,.4,1)}
+#surprise .close{position:absolute;bottom:calc(36px + env(safe-area-inset-bottom,0px));left:0;right:0;color:rgba(255,255,255,.8);font-size:14px;z-index:2}
+.heart{position:absolute;bottom:-40px;font-size:24px;animation:rise linear forwards;pointer-events:none;z-index:1}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+.rise{animation:slide .8s ease both}
+@keyframes slide{from{transform:translateY(22px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.rise,#surprise .msg{animation:none}.heart{display:none}html{scroll-behavior:auto}}
+@media (min-width:700px){.wrap{max-width:520px;gap:56px}}
+</style>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="cards" aria-hidden="true"><div class="card">7</div><div class="card">2</div><div class="card">+4</div><div class="card">9</div></div>
+    <p class="quote">“¿Quién iba a pensar que, jugando UNO, al final íbamos a ser los dos?”</p>
+    <div>
+      <p class="since">Desde el 23 de mayo de 2026</p>
+      <p class="big" aria-label="5">5</p>
+    </div>
+    <h1 class="tagline">meses siendo tuyo y siendo feliz</h1>
+    <div class="counter" role="timer" aria-label="Tiempo juntos">
+      <div class="tick"><b id="d">0</b><span>días</span></div>
+      <div class="tick"><b id="h">00</b><span>horas</span></div>
+      <div class="tick"><b id="m">00</b><span>min</span></div>
+      <div class="tick"><b id="s">00</b><span>seg</span></div>
+    </div>
+    <p class="note">Todo el tiempo que llevo queriéndote como novio.</p>
+  </header>
+
+  <figure class="polaroid" style="--r:-2deg"><img src="img/primer.jpg" alt="Los dos sonriendo, abrazados" width="1000" height="1120"><figcaption>Nuestro primer día de novios</figcaption></figure>
+
+  <section class="meet">
+    <div class="rainbow"></div>
+    <h2 class="title">El día que nos conocimos</h2>
+    <p>Fue un momento inesperado: jugando UNO en el piso con los muchachos, justo yo te estaba ganando. ¿Quién iba a pensar que iba a mover esas fibras en tu corazón?</p>
+  </section>
+
+  <section class="best">
+    <h2 class="title">Los mejores meses de mi vida</h2>
+    <p>Hay días que se olvidan y días que uno guarda para siempre. Estos son los que guardo contigo.</p>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:1.8deg"><img src="img/empezo.jpg" alt="Ella sacándole la lengua en la mejilla" loading="lazy"><figcaption>Así empezó todo</figcaption></figure>
+    <div class="text"><span class="kicker">Los primeros días</span><h3 class="title">Contigo todo es fácil</h3><p>Tú sacándome la lengua y yo sin poder dejar de sonreír. Ahí entendí que contigo todo iba a ser divertido y que quería más de esto.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:-1.6deg"><img src="img/travesuras.jpg" alt="Ella lamiéndole la mejilla" loading="lazy"><figcaption>Tú y tus travesuras</figcaption></figure>
+    <div class="text"><span class="kicker">Más travesuras</span><h3 class="title">Contigo todo es juego</h3><p>Contigo hasta lo más tonto se vuelve mi parte favorita del día. Nunca me había reído tanto ni había sido tan yo mismo.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:1.4deg"><img src="img/beso.jpg" alt="Un besito entre los dos" loading="lazy"><figcaption>Un beso chiquito</figcaption></figure>
+    <div class="text"><span class="kicker">Cerquita</span><h3 class="title">Tus besos paran el mundo</h3><p>Un besito tuyo y se me quita el cansancio, la prisa y cualquier mal día. Ahí es donde mejor estoy.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:-1.8deg"><img src="img/lugar.jpg" alt="Abrazados frente al espejo" loading="lazy"><figcaption>Mi lugar favorito</figcaption></figure>
+    <div class="text"><span class="kicker">En casa</span><h3 class="title">Tus abrazos son mi hogar</h3><p>No necesito más que tenerte cerca. Tus abrazos son el lugar donde me siento seguro y donde quiero quedarme.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:1.5deg"><img src="img/tuyyo.jpg" alt="Los dos juntos con chaquetas negras" loading="lazy"><figcaption>Tú y yo</figcaption></figure>
+    <div class="text"><span class="kicker">Un día cualquiera</span><h3 class="title">Lo simple contigo es lo mejor</h3><p>No hacen falta planes grandes. Un rato sentados, tú a mi lado, y ya es uno de los mejores momentos de mi vida.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:-1.4deg"><img src="img/complice.jpg" alt="Ella mostrando su anillo" loading="lazy"><figcaption>Mi cómplice</figcaption></figure>
+    <div class="text"><span class="kicker">Siempre juntos</span><h3 class="title">Mi compañera de todo</h3><p>Contigo comparto los días buenos, los cansados y los que no tienen nada de especial. Contigo todos valen la pena.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:1.7deg"><img src="img/bravita.jpg" alt="Ella con cara de brava y gafas" loading="lazy"><figcaption>Hasta bravita</figcaption></figure>
+    <div class="text"><span class="kicker">Sin filtros</span><h3 class="title">Me gustas tal cual eres</h3><p>Sonriendo, riéndote o con tu cara de brava, me encantas. Me encanta cada versión de ti.</p></div>
+  </section>
+
+  <section class="block">
+    <figure class="polaroid" style="--r:-1.5deg"><img src="img/felicidad.jpg" alt="Él sonriendo con un niño que saca la lengua" loading="lazy"><figcaption>Felicidad de verdad</figcaption></figure>
+    <div class="text"><span class="kicker">Hoy</span><h3 class="title">Contigo aprendí a ser feliz</h3><p>Cada vez que sonrío así de verdad, sé que es porque llegaste tú a mi vida.</p></div>
+  </section>
+
+  <article class="letter">
+    <h2>Para ti, mi amor</h2>
+    <p>Hace cinco meses te pedí que fueras mi novia, y fue la mejor decisión que he tomado. Desde que estás aquí, mis días tienen otro color.</p>
+    <p>Gracias por tu paciencia, tus risas, tus abrazos y por quedarte a mi lado. Cada momento contigo es el mejor que he vivido en toda mi vida.</p>
+    <p>Quiero seguir sumando meses, después años, y seguir tomándonos fotos sacando la lengua. Te quiero muchísimo.</p>
+    <p class="sign">Feliz 5 meses. Tuyo siempre.</p>
+  </article>
+
+  <div class="cta">
+    <span>Toca el corazón, es para ti.</span>
+    <button class="love" id="love" type="button">Te quiero ❤️</button>
+  </div>
+</main>
+
+<div id="surprise" hidden role="dialog" aria-label="Sorpresa">
+  <p class="msg">Obvio marrana y TE AMOO también ❤️</p>
+  <span class="close">Toca para cerrar</span>
+</div>
+
+<script>
+(function(){
+  // Contador desde el 23 de mayo de 2026 (hora local)
+  var start=new Date(2026,4,23,0,0,0).getTime();
+  var d=document.getElementById('d'),h=document.getElementById('h'),m=document.getElementById('m'),s=document.getElementById('s');
+  function p(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var t=Math.max(0,Math.floor((Date.now()-start)/1000));
+    d.textContent=Math.floor(t/86400);
+    h.textContent=p(Math.floor(t%86400/3600));
+    m.textContent=p(Math.floor(t%3600/60));
+    s.textContent=p(t%60);
+  }
+  tick();setInterval(tick,1000);
+
+  // Entrada suave al hacer scroll (todo es visible desde el inicio)
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rise');io.unobserve(e.target)}})},{threshold:.15});
+    document.querySelectorAll('.block,.letter,.meet,.best').forEach(function(el){io.observe(el)});
+  }
+
+  // Sorpresa
+  var box=document.getElementById('surprise'),btn=document.getElementById('love'),timer;
+  var emojis=['❤️','💖','💕','💗','🩷'];
+  function hearts(){
+    var el=document.createElement('span');el.className='heart';
+    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.fontSize=(18+Math.random()*26)+'px';
+    var dur=3+Math.random()*3;el.style.animationDuration=dur+'s';
+    box.appendChild(el);setTimeout(function(){el.remove()},dur*1000);
+  }
+  function open(){box.hidden=false;for(var i=0;i<14;i++)setTimeout(hearts,i*90);timer=setInterval(hearts,260)}
+  function close(){box.hidden=true;clearInterval(timer);box.querySelectorAll('.heart').forEach(function(x){x.remove()})}
+  btn.addEventListener('click',open);
+  box.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
