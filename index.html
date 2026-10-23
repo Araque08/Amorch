@@ -1,5 +1,9 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>5 meses contigo</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -21,7 +25,8 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img{max-width:100%}
 body{
   margin:0;background:var(--bg);color:var(--fg);
   font-family:var(--f-body);font-size:16px;line-height:1.6;
@@ -100,6 +105,8 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 @media (min-width:700px){.wrap{max-width:520px;gap:56px}}
 </style>
 
+</head>
+<body>
 <main class="wrap">
   <header class="hero">
     <div class="cards" aria-hidden="true"><div class="card">7</div><div class="card">2</div><div class="card">+4</div><div class="card">9</div></div>
@@ -229,3 +236,5 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
 </script>
+</body>
+</html>
